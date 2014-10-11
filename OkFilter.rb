@@ -5,6 +5,7 @@ require 'highline/import'
 require 'watir'
 require 'watir-webdriver'
 
+
 name = ask "What's your OKC name? "
 pass = ask("Password? ") { |q| q.echo = false }
 

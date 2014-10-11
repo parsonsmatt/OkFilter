@@ -1,6 +1,6 @@
 # OkFilter
 
-v0.1.0
+v0.1.1
 
 I've had a lot of luck on OkCupid, but I find that it requires a lot of repetitive work to really get good results out of it. I've found that their rating system works pretty well to filter people: 1 starred people aren't shown to you (or you to them) and mutual 4/5 stars are notified of the match.
 
@@ -9,3 +9,7 @@ When you hide or 1 star enough people, OkCupid will 'refresh' who it shows you, 
 Fortunately, OKC's match algorithm actually works really well. If your questions/answers are well calibrated, anyway.
 
 This script asks for your login information, logs in to OkCupid, and starts rating people based on match percentage. Currently, it 1 stars anyone less than 70% and 5 stars anyone higher than 90%, skipping everyone in between.It will run until terminated.
+
+## Usage:
+
+`ruby OkFilter.rb [-v]`. `-v` specifies verbose output and will log what it's doing. Seeing the percentages is interesting.
