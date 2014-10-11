@@ -5,32 +5,37 @@ require 'highline/import'
 require 'watir'
 require 'watir-webdriver'
 
-a = Mechanize.new
 name = ask "What's your OKC name? "
 pass = ask("Password? ") { |q| q.echo = false }
 
-a.get 'http://www.okcupid.com/login'
+b = Watir::Browser.new
 
-login_form = a.page.form[2]
+# Log in:
+b.goto 'http://www.okcupid.com/'
+b.link(:id, "open_sign_in_button").click
+sleep 3
+b.text_field(:id, 'login_username').set name
+b.text_field(:id, 'login_password').set pass
+b.button(:id, 'sign_in_button').click
+sleep 3
 
-login_form['username'] = name
-login_form['password'] = pass
-login_form.submit
-
+# Go to Quickmatch:
 quickmatch_url = 'http://www.okcupid.com/quickmatch'
+b.goto quickmatch_url
 
-a.get quickmatch_url
+sleep 5
 
-# Scan page for match percentage
-# OKC puuts it in a <span class="percent"></span> but loads it with
-# javascript. The result is... hmm... how to get?
+# Start rating!
+for num in 1..100 do
+	match_percentage = b.span(:class => 'percent').text.to_i
+	
+	if match_percentage >= 90
+		b.link(:text => '5 star rating').click
+	elsif match_percentage <= 70
+		b.link(:text => '1 star rating').click
+	else
+		b.link(:text => 'Skip').click
+	end
 
-match_percentage = 80
-
-if match_percentage >= 90
-	a.page.link_with(:text => "5 star rating").click
-elsif match_percentage <= 60
-	a.page.link_with(:text => "1 star rating").click
-else 
-	a.page.link_with(
+	sleep 2
 end
