@@ -13,7 +13,7 @@ b = Watir::Browser.new
 # Log in:
 b.goto 'http://www.okcupid.com/'
 b.link(:id, "open_sign_in_button").click
-sleep 3
+sleep 1 
 b.text_field(:id, 'login_username').set name
 b.text_field(:id, 'login_password').set pass
 b.button(:id, 'sign_in_button').click
@@ -23,10 +23,10 @@ sleep 3
 quickmatch_url = 'http://www.okcupid.com/quickmatch'
 b.goto quickmatch_url
 
-sleep 5
+sleep 3 
 
 # Start rating!
-for num in 1..100 do
+while true do
 	match_percentage = b.span(:class => 'percent').text.to_i
 	
 	if match_percentage >= 90
@@ -37,5 +37,5 @@ for num in 1..100 do
 		b.link(:text => 'Skip').click
 	end
 
-	sleep 2
+	sleep 1
 end
