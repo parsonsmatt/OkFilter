@@ -11,6 +11,7 @@ pass = ask("Password? ") { |q| q.echo = false }
 b = Watir::Browser.new
 
 # Log in:
+puts "Logging in..."
 b.goto 'http://www.okcupid.com/'
 b.link(:id, "open_sign_in_button").click
 sleep 1 
@@ -20,22 +21,30 @@ b.button(:id, 'sign_in_button').click
 sleep 3
 
 # Go to Quickmatch:
+puts "Going to Quickmatch..."
 quickmatch_url = 'http://www.okcupid.com/quickmatch'
 b.goto quickmatch_url
 
 sleep 3 
 
+matched = 0
+rejected = 0
+total = 0
+
 # Start rating!
 while true do
 	match_percentage = b.span(:class => 'percent').text.to_i
-	
+	total += 1
 	if match_percentage >= 90
+		matched += 1
 		b.link(:text => '5 star rating').click
 	elsif match_percentage <= 70
+		rejected += 1
 		b.link(:text => '1 star rating').click
 	else
 		b.link(:text => 'Skip').click
 	end
 
+	puts "Matched: #{matched}/#{total} (#{(matched.to_f/total*100).to_i}%)\tRejected:#{rejected}/#{total} (#{(rejected.to_f/total*100).to_i}%)"
 	sleep 1
 end
