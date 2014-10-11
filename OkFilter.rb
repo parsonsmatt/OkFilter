@@ -8,10 +8,12 @@ require 'watir-webdriver'
 name = ask "What's your OKC name? "
 pass = ask("Password? ") { |q| q.echo = false }
 
+VERBOSE = ARGV.include? "-v"
+
 b = Watir::Browser.new
 
 # Log in:
-puts "Logging in..."
+puts "Logging in..." if VERBOSE
 b.goto 'http://www.okcupid.com/'
 b.link(:id, "open_sign_in_button").click
 sleep 1 
@@ -21,7 +23,7 @@ b.button(:id, 'sign_in_button').click
 sleep 3
 
 # Go to Quickmatch:
-puts "Going to Quickmatch..."
+puts "Going to Quickmatch..." if VERBOSE
 quickmatch_url = 'http://www.okcupid.com/quickmatch'
 b.goto quickmatch_url
 
@@ -45,6 +47,6 @@ while true do
 		b.link(:text => 'Skip').click
 	end
 
-	puts "Matched: #{matched}/#{total} (#{(matched.to_f/total*100).to_i}%)\tRejected:#{rejected}/#{total} (#{(rejected.to_f/total*100).to_i}%)"
+	puts "Matched: #{matched}/#{total} (#{(matched.to_f/total*100).to_i}%)\tRejected:#{rejected}/#{total} (#{(rejected.to_f/total*100).to_i}%)" if VERBOSE
 	sleep 1
 end
