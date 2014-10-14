@@ -29,7 +29,7 @@ This script asks for your login information, logs in to OkCupid, and starts rati
 ### Windows
 
 1. Install [Ruby 1.9.3](http://rubyinstaller.org/downloads/)
-2. Download/clone the repository (link to the right)
+2. [Download](https://github.com/parsonsmatt/OkFilter/archive/master.zip) or clone the repository
 3. Extract the repository to a folder
 4. Go into the 'OkFilter-master' folder, hold Shift and right-click in the folder area. Choose 'Open command window here'
 5. Type `gem install bundler` and press enter. This installs the dependency installer.
