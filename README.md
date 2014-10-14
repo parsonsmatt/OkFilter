@@ -1,6 +1,6 @@
 # OkFilter
 
-v0.2.0
+v0.2.1
 
 I've had a lot of luck on OkCupid, but I find that it requires a lot of repetitive work to really get good results out of it. I've found that their rating system works pretty well to filter people: 1 starred people aren't shown to you (or you to them) and mutual 4/5 stars are notified of the match.
 
@@ -31,7 +31,7 @@ This script asks for your login information, logs in to OkCupid, and starts rati
 1. Install [Ruby 1.9.3](http://rubyinstaller.org/downloads/)
 2. [Download](https://github.com/parsonsmatt/OkFilter/archive/master.zip) or clone the repository
 3. Extract the repository to a folder
-4. Go into the 'OkFilter-master' folder, hold Shift and right-click in the folder area. Choose 'Open command window here'
-5. Type `gem install bundler` and press enter. This installs the dependency installer.
-6. Once that has completed, type `bundler install` and press enter. This installs the dependencies required to run the program.
-7. To run the program, type `ruby OkFilter.rb` in the direcotry. Extra usage information is available above.
+4. Go into the 'OkFilter-master' folder.
+5. Double-click `win_install.bat`. This installs the bundler gem and installs dependencies.  ` 
+6. Once that has completed, double-click `OkFilter.bat`.
+7. Or, for more options, run `ruby OkFilter.rb` from the command prompt in the directory. Extra usage information is available above.
