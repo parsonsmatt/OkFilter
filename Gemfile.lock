@@ -7,6 +7,7 @@ GEM
     domain_name (0.5.21)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.6)
+    ffi (1.9.6-java)
     ffi (1.9.6-x86-mingw32)
     highline (1.6.21)
     http-cookie (1.0.2)
@@ -29,6 +30,7 @@ GEM
     net-http-persistent (2.9.4)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    nokogiri (1.6.3.1-java)
     nokogiri (1.6.3.1-x86-mingw32)
       mini_portile (= 0.6.0)
     ntlm-http (0.1.1)
@@ -43,6 +45,7 @@ GEM
     subexec (0.2.3)
     unf (0.1.4)
       unf_ext
+    unf (0.1.4-java)
     unf_ext (0.0.6)
     unf_ext (0.0.6-x86-mingw32)
     watir (5.0.0)
@@ -78,6 +81,7 @@ GEM
       windows-api (>= 0.4.0)
 
 PLATFORMS
+  java
   ruby
   x86-mingw32
 
