@@ -4,6 +4,8 @@
 require 'highline/import'
 require 'watir-webdriver'
 
+VERBOSE = false;
+
 class OkFilter 
 	def initialize(name, pass, filter, like)
 		@name = name
