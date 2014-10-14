@@ -15,9 +15,13 @@ This script asks for your login information, logs in to OkCupid, and starts rati
 `ruby OkFilter.rb [-v] [-h] [-u Username] [-L 90] [-F 60]`
 
 `-v` will cause OkFilter to log output to the console.
+
 `-h` will print help information.
+
 `-u Username` will preset your username.
+
 `-L 90` allows you to set the number at which OkFilter will 'Like' someone. 90% match is the default. 100 won't 'Like' anyone.
+
 `-F 60` allows you to set the number at which OkFilter will 'Dislike' someone. 60% match is the default. 0 won't 'Dislike` anyone.
 
 ## To Install:
