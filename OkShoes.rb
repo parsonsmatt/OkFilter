@@ -35,15 +35,19 @@ Shoes.app(title: "OkFilter") do
 	end
 	
 	@go.click do
-		keep_going = true;	 
+
 		okc = OkFilter.new @username.text, 
-											 @password.text,
-											 @filter.to_i,
-											 @like.to_i
-		okc.login
-		okc.goto_quickmatch
-		while @keep_going do
-			okc.rate_quickmatch
+						   @password.text,
+						   @filter.to_i,
+						   @like.to_i
+		Thread.new do
+			@keep_going = true;	 
+			okc.login
+			okc.goto_quickmatch
+			while @keep_going do
+				okc.rate_quickmatch
+			end
+			okc.close
 		end
 	end
 end

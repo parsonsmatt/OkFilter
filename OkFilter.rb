@@ -54,6 +54,10 @@ class OkFilter
 		puts "Matched: #{@matched}/#{@total} (#{(@matched.to_f/@total*100).to_i}%)\tRejected:#{@rejected}/#{@total} (#{(@rejected.to_f/@total*100).to_i}%)" if VERBOSE
 		sleep 1
 	end
+
+	def close 
+		@b.close
+	end
 end
 
 if  __FILE__ == $0
