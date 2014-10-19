@@ -21,7 +21,7 @@ ignore:
   - 'spec'
 
 # How to run the app
-run: bin/hello_from_warbler
+run: OkShoes.rb
 
 # -----------------------------------------------------------------------------
 # The following options are new in Shoes 4. They don't work in Shoes 3.
@@ -29,9 +29,8 @@ run: bin/hello_from_warbler
 
 # Installed gems to bundle with the app
 gems: 
-'highline'
-'watir-webdriver'
-'shoes', '~> 4.0.0.pre2'
+  - 'highline'
+  - 'watir-webdriver'
 
 # -----------------------------------------------------------------------------
 # The following options are only available for Shoes 3. They won't work (yet)
@@ -39,21 +38,21 @@ gems:
 # -----------------------------------------------------------------------------
 
 # The app's version number
-version: 0.0.1
+# version: 0.0.1
 
 # The name of this release
-release: Mindfully
+# release: Mindfully
 
 # App icons for various platforms
-icons:
-  osx: static/Shoes.icns
-  gtk: path/to/app.png
-  win32: path/to/App.ico
+#icons:
+#  osx: static/Shoes.icns
+#  gtk: path/to/app.png
+#  win32: path/to/App.ico
 
 # Artwork for a DMG
-dmg:
-  ds_store: path/to/.DS_Store
-  background: path/to/background.png
+#dmg:
+#  ds_store: path/to/.DS_Store
+#  background: path/to/background.png
 
 # The command to clone the app using git. Note that the prefix included here is
 # an in-package prefix, so unless you know what the inside of your package
