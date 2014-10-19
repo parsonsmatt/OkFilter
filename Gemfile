@@ -2,6 +2,6 @@
 source "https://rubygems.org"
 
 gem "highline"
-gem "mechanize"
-gem "watir"
 gem "watir-webdriver"
+gem 'shoes', '~> 4.0.0.pre2'
+
