@@ -35,7 +35,7 @@ class OkFilter
 	end
 	
 	def rate_quickmatch
-		match_percentage = @b.span(:class => 'percent').text.to_i
+		match_percentage = @b.span(:class => 'match').text.to_i
 		@total += 1
 		if match_percentage >= @like
 			@matched += 1
