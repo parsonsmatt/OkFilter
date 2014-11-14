@@ -1,6 +1,6 @@
 # OkFilter
 
-v0.3.0
+v0.3.1
 
 I've had a lot of luck on OkCupid, but I find that it requires a lot of repetitive work to really get good results out of it. I've found that their rating system works pretty well to filter people: 1 starred people aren't shown to you (or you to them) and mutual 4/5 stars are notified of the match.
 
@@ -31,3 +31,7 @@ The GUI requires jruby-1.7.16 and the Shoes4444 gem.
 `-L 90` allows you to set the number at which OkFilter will 'Like' someone. 90% match is the default. 100 won't 'Like' anyone.
 
 `-F 60` allows you to set the number at which OkFilter will 'Dislike' someone. 60% match is the default. 0 won't 'Dislike` anyone.
+
+## Change log:
+
+- v0.3.1: OkCupid updated their QuickMatch to just 'Like' and 'Dislike'. I've updated the app to work with the new layout.
