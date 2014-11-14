@@ -27,6 +27,7 @@ Shoes.app(title: "OkFilter", width: 350, height: 250) do
 			@stop = button "Stop!!", :width => 80, :right => 40
 		end
 	end # end stack
+
 	# program logic
 	@keep_going = true
 	
@@ -35,7 +36,6 @@ Shoes.app(title: "OkFilter", width: 350, height: 250) do
 	end
 	
 	@go.click do
-
 		okc = OkFilter.new @username.text, 
 						   @password.text,
 						   @filter.to_i,
