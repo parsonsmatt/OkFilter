@@ -1,6 +1,6 @@
 # OkShoes -- Shoes GUI for OkFilter!
 
-require './OkFilter'
+require_relative './OkFilter'
 
 Shoes.app(title: "OkFilter", width: 350, height: 250) do
 	stack( margin: 20, align: 'right' ) do
