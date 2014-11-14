@@ -4,6 +4,8 @@
 require 'highline/import'
 require 'watir-webdriver'
 
+VERBOSE = false;
+
 class OkFilter 
 	def initialize(name, pass, filter, like)
 		@name = name
@@ -18,6 +20,7 @@ class OkFilter
 	
 	def login 
 		puts "Logging in..." if VERBOSE
+		
 		@b = Watir::Browser.new
 		@b.goto 'http://www.okcupid.com/'
 		@b.link(:id, "open_sign_in_button").click
@@ -51,42 +54,47 @@ class OkFilter
 		puts "Matched: #{@matched}/#{@total} (#{(@matched.to_f/@total*100).to_i}%)\tRejected:#{@rejected}/#{@total} (#{(@rejected.to_f/@total*100).to_i}%)" if VERBOSE
 		sleep 1
 	end
+
+	def close 
+		@b.close
+	end
 end
 
-abort unless __FILE__.include? "OkFilter.rb"
+if  __FILE__ == $0
 
-help_message =  "Usage: OkFilter.rb [-h][-v][-u username][-F filter_below_match][-L like_above_match]\n\n" +
-		   "-h\tDisplays usage help.\n"+
-		   "-v\tVerbose logging.\n" +
-		   "-u\tUsername. If nothing here, will prompt for it.\n" +
-		   "-F\tFilters matches if their match % is lower than this number. Default 60\n" +
-		   "-L\tLikes matches if their match % is above this number. Default 90\n"
+	help_message = "Usage: OkFilter.rb [-h][-v][-u username][-F filter_below_match][-L like_above_match]\n\n" +
+			   "-h\tDisplays usage help.\n"+
+			   "-v\tVerbose logging.\n" +
+				 "-u\tUsername. If nothing here, will prompt for it.\n" +
+				 "-F\tFilters matches if their match % is lower than this number. Default 60\n" +
+				 "-L\tLikes matches if their match % is above this number. Default 90\n"
 
-if ARGV.include? "-h"
-  abort help_message
-end
+	if ARGV.include? "-h"
+		abort help_message
+	end
 
-VERBOSE = ARGV.include? "-v"
-DEFAULT_LOWER = 60
-DEFAULT_UPPER = 90
+	VERBOSE = ARGV.include? "-v"
+	DEFAULT_LOWER = 60
+	DEFAULT_UPPER = 90
 
-name = ARGV[ARGV.index("-u") + 1].to_s if ARGV.include? "-u" || ask("What's your OKC name? ")
-lower = ARGV[ARGV.index("-F")+ 1].to_i if ARGV.include? "-F" || DEFAULT_LOWER
-upper = ARGV[ARGV.index("-L") + 1].to_i if ARGV.include? "-L" || DEFAULT_UPPER
+	name = ARGV[ARGV.index("-u") + 1].to_s if ARGV.include? "-u" || ask("What's your OKC name? ")
+	lower = ARGV[ARGV.index("-F")+ 1].to_i if ARGV.include? "-F" || DEFAULT_LOWER
+	upper = ARGV[ARGV.index("-L") + 1].to_i if ARGV.include? "-L" || DEFAULT_UPPER
 
-name ||= ask "What's your OKC name? "
+	name ||= ask "What's your OKC name? "
 
-pass = ask("Password? ") { |q| q.echo = false }
+	pass = ask("Password? ") { |q| q.echo = false }
 
-okc = OkFilter.new name, pass, lower, upper
+	okc = OkFilter.new name, pass, lower, upper
 
-# Log in:
-okc.login
+	# Log in:
+	okc.login
 
-# Go to Quickmatch:
-okc.goto_quickmatch
+	# Go to Quickmatch:
+	okc.goto_quickmatch
 
-# Start rating!
-while true do
-	okc.rate_quickmatch
+	# Start rating!
+	while true do
+		okc.rate_quickmatch
+	end
 end
