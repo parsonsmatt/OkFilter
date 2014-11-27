@@ -42,7 +42,7 @@ class OkFilter
 		@total += 1
 		if match_percentage >= @like
 			@matched += 1
-			@b.link(:id => 'quickmatch-like').click
+			@b.button(:id => 'quickmatch-like').click
 		elsif match_percentage <= @filter && match_percentage > 0 # 0 might mean that they haven't filled out their profile yet!
 			@rejected += 1
 			@b.button(:id => 'quickmatch-dislike').click
