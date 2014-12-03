@@ -4,8 +4,6 @@
 require 'highline/import'
 require 'watir-webdriver'
 
-VERBOSE = false;
-
 class OkFilter 
 	def initialize(name, pass, filter, like)
 		@name = name
@@ -32,7 +30,6 @@ class OkFilter
 	end
 	
 	def goto_quickmatch
-		puts "Going to Quickmatch..." if VERBOSE
 		quickmatch_url = 'http://www.okcupid.com/quickmatch'
 		@b.goto quickmatch_url
 	end
@@ -43,11 +40,10 @@ class OkFilter
 		if match_percentage >= @like
 			@matched += 1
 			@b.button(:id => 'quickmatch-like').click
-		elsif match_percentage <= @filter && match_percentage > 0 # 0 might mean that they haven't filled out their profile yet!
+		elsif match_percentage <= @filter 
 			@rejected += 1
 			@b.button(:id => 'quickmatch-dislike').click
 		else
-			@b.refresh
 			@skipped += 1
 		end
 
@@ -90,11 +86,9 @@ if  __FILE__ == $0
 	# Log in:
 	okc.login
 
-	# Go to Quickmatch:
-	okc.goto_quickmatch
-
 	# Start rating!
 	while true do
-		okc.rate_quickmatch
+		okc.goto_quickmatch
+        okc.rate_quickmatch
 	end
 end
