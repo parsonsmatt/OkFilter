@@ -5,11 +5,11 @@ require 'highline/import'
 require 'watir-webdriver'
 
 class OkFilter 
-  def initialize(name, pass, filter, like)
+  def initialize(name:, password:, filter: 60, like: 90)
     @name = name
     @pass = pass
-    @filter = filter || 60
-    @like = like || 90
+    @filter = filter
+    @like = like
     @matched = 0
     @rejected = 0
     @skipped = 0
@@ -81,7 +81,7 @@ if  __FILE__ == $0
 
   pass = ask("Password? ") { |q| q.echo = false }
 
-  okc = OkFilter.new name, pass, lower, upper
+  okc = OkFilter.new name: name, password: pass, lower: lower, upper: upper
 
   # Log in:
   okc.login
